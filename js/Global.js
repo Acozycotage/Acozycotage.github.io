@@ -1,1 +1,139 @@
-function switchNightMode(){document.querySelector("body").insertAdjacentHTML("beforeend",'<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"><div id="sun"></div><div id="moon"></div></div></div>'),setTimeout((function(){document.querySelector("body").classList.contains("DarkMode")?(document.querySelector("body").classList.remove("DarkMode"),localStorage.setItem("isDark","0"),document.getElementById("modeicon").setAttribute("xlink:href","#icon-moon")):(document.querySelector("body").classList.add("DarkMode"),localStorage.setItem("isDark","1"),document.getElementById("modeicon").setAttribute("xlink:href","#icon-sun")),setTimeout((function(){document.getElementsByClassName("Cuteen_DarkSky")[0].style.transition="opacity 3s",document.getElementsByClassName("Cuteen_DarkSky")[0].style.opacity="0",setTimeout((function(){document.getElementsByClassName("Cuteen_DarkSky")[0].remove()}),1e3)}),2e3)}));"light"===("dark"===document.documentElement.getAttribute("data-theme")?"dark":"light")?(document.getElementById("sun").style.opacity="1",document.getElementById("moon").style.opacity="0",setTimeout((function(){document.getElementById("sun").style.opacity="0",document.getElementById("moon").style.opacity="1"}),1e3),activateDarkMode(),saveToLocal.set("theme","dark",2),document.getElementById("modeicon").setAttribute("xlink:href","#icon-sun"),setTimeout((()=>{new Vue({data:function(){this.$notify({title:"关灯啦🌙",message:"当前已成功切换至夜间模式！",position:"top-left",offset:50,showClose:!0,type:"success",duration:5e3})}})}),2e3)):(document.getElementById("sun").style.opacity="0",document.getElementById("moon").style.opacity="1",setTimeout((function(){document.getElementById("sun").style.opacity="1",document.getElementById("moon").style.opacity="0"}),1e3),activateLightMode(),saveToLocal.set("theme","light",2),document.querySelector("body").classList.add("DarkMode"),document.getElementById("modeicon").setAttribute("xlink:href","#icon-moon"),setTimeout((()=>{new Vue({data:function(){this.$notify({title:"开灯啦🌞",message:"当前已成功切换至白天模式！",position:"top-left",offset:50,showClose:!0,type:"success",duration:5e3})}})}),2e3)),"function"==typeof utterancesTheme&&utterancesTheme(),"object"==typeof FB&&window.loadFBComment(),window.DISQUS&&document.getElementById("disqus_thread").children.length&&setTimeout((()=>window.disqusReset()),200)}let newYearTimer=null;var newYear=()=>{if(clearTimeout(newYearTimer),!document.querySelector("#newYear"))return;let e=new Date("2023-01-22 00:00:00").getTime()/1e3,t={0:"周日",1:"周一",2:"周二",3:"周三",4:"周四",5:"周五",6:"周六"};function n(e){return e>9?e:"0"+e}!function o(){let a=new Date;document.querySelector("#newYear .today").innerHTML=a.getFullYear()+"-"+(a.getMonth()+1)+"-"+a.getDate()+" "+t[a.getDay()];let s=e-Math.round(a.getTime()/1e3);if(s<0)document.querySelector("#newYear .title").innerHTML="Happy New Year!",document.querySelector("#newYear .newYear-time").innerHTML='<span class="happyNewYear">新年快乐</span>';else if(document.querySelector("#newYear .title").innerHTML="距离2023年春节：",s>86400)document.querySelector("#newYear .newYear-time").innerHTML=`<span class="day">${Math.ceil(s/86400)}<span class="unit">天</span></span>`;else{let e=n(parseInt(s/3600));s%=3600;let t=n(parseInt(s/60));s%=60;let a=n(s);document.querySelector("#newYear .newYear-time").innerHTML=`<span class="time">${e}:${t}:${a}</span></span>`,newYearTimer=setTimeout(o,1e3)}}(),jQuery(document).ready((function(e){e("#newYear").wpSuperSnow({flakes:["https://lskypro.acozycotage.net/LightPicture/2023/01/422ec05c4910783f.webp","https://lskypro.acozycotage.net/LightPicture/2023/01/9fa7569281c7bdf3.webp","https://lskypro.acozycotage.net/LightPicture/2023/01/4155f6d134e5e85f.webp"],totalFlakes:"100",zIndex:"999999",maxSize:"30",maxDuration:"20",useFlakeTrans:!1})}))};newYear();
+//黑夜白天切换动画
+function switchNightMode() {
+    document.querySelector('body').insertAdjacentHTML('beforeend', '<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"><div id="sun"></div><div id="moon"></div></div></div>'),
+        setTimeout(function () {
+            document.querySelector('body').classList.contains('DarkMode') ? (document.querySelector('body').classList.remove('DarkMode'), localStorage.setItem('isDark', '0'), document.getElementById('modeicon').setAttribute('xlink:href', '#icon-moon')) : (document.querySelector('body').classList.add('DarkMode'), localStorage.setItem('isDark', '1'), document.getElementById('modeicon').setAttribute('xlink:href', '#icon-sun')),
+                setTimeout(function () {
+                    document.getElementsByClassName('Cuteen_DarkSky')[0].style.transition = 'opacity 3s';
+                    document.getElementsByClassName('Cuteen_DarkSky')[0].style.opacity = '0';
+                    setTimeout(function () {
+                        document.getElementsByClassName('Cuteen_DarkSky')[0].remove();
+                    }, 1e3);
+                }, 2e3)
+        })
+    const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+    if (nowMode === 'light') {
+        // 先设置太阳月亮透明度
+        document.getElementById("sun").style.opacity = "1";
+        document.getElementById("moon").style.opacity = "0";
+        setTimeout(function () {
+            document.getElementById("sun").style.opacity = "0";
+            document.getElementById("moon").style.opacity = "1";
+        }, 1000);
+
+        activateDarkMode()
+        saveToLocal.set('theme', 'dark', 2)
+        // GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)
+        document.getElementById('modeicon').setAttribute('xlink:href', '#icon-sun')
+        // 延时弹窗提醒
+        setTimeout(() => {
+            new Vue({
+                data: function () {
+                    this.$notify({
+                        title: "关灯啦🌙",
+                        message: "当前已成功切换至夜间模式！",
+                        position: 'top-left',
+                        offset: 50,
+                        showClose: true,
+                        type: "success",
+                        duration: 5000
+                    });
+                }
+            })
+        }, 2000)
+    } else {
+        // 先设置太阳月亮透明度
+        document.getElementById("sun").style.opacity = "0";
+        document.getElementById("moon").style.opacity = "1";
+        setTimeout(function () {
+            document.getElementById("sun").style.opacity = "1";
+            document.getElementById("moon").style.opacity = "0";
+        }, 1000);
+        
+        activateLightMode()
+        saveToLocal.set('theme', 'light', 2)
+        document.querySelector('body').classList.add('DarkMode'), document.getElementById('modeicon').setAttribute('xlink:href', '#icon-moon')
+        setTimeout(() => {
+            new Vue({
+                data: function () {
+                    this.$notify({
+                        title: "开灯啦🌞",
+                        message: "当前已成功切换至白天模式！",
+                        position: 'top-left',
+                        offset: 50,
+                        showClose: true,
+                        type: "success",
+                        duration: 5000
+                    });
+                }
+            })
+        }, 2000)
+    }
+    // handle some cases
+    typeof utterancesTheme === 'function' && utterancesTheme()
+    typeof FB === 'object' && window.loadFBComment()
+    window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200)
+}
+
+//新年卡片
+let newYearTimer = null;
+var newYear = () => {
+    clearTimeout(newYearTimer);
+    if (!document.querySelector('#newYear')) return;
+    // 新年时间戳 and 星期对象
+    let newYear = new Date('2023-01-22 00:00:00').getTime() / 1000,
+        week = { 0: '周日', 1: '周一', 2: '周二', 3: '周三', 4: '周四', 5: '周五', 6: '周六' }
+
+    time();
+
+    // 补零函数
+    function nol(h) { return h > 9 ? h : '0' + h; };
+
+    function time() {
+        // 现在 时间对象
+        let now = new Date();
+
+        // 右下角 今天
+        document.querySelector('#newYear .today').innerHTML = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + week[now.getDay()]
+
+        // 现在与新年相差秒数
+        let second = newYear - Math.round(now.getTime() / 1000);
+
+        // 小于0则表示已经过年
+        if (second < 0) {
+            document.querySelector('#newYear .title').innerHTML = 'Happy New Year!';
+            document.querySelector('#newYear .newYear-time').innerHTML = '<span class="happyNewYear">新年快乐</span>';
+        } else {
+            // 大于0则还未过年
+            document.querySelector('#newYear .title').innerHTML = '距离2023年春节：'
+
+            // 大于一天则直接渲染天数
+            if (second > 86400) {
+                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="day">${Math.ceil(second / 86400)}<span class="unit">天</span></span>`
+            } else {
+                // 小于一天则使用时分秒计时。
+                let h = nol(parseInt(second / 3600));
+                second %= 3600;
+                let m = nol(parseInt(second / 60));
+                second %= 60;
+                let s = nol(second);
+                document.querySelector('#newYear .newYear-time').innerHTML = `<span class="time">${h}:${m}:${s}</span></span>`;
+                // 计时
+                newYearTimer = setTimeout(time, 1000);
+            }
+        }
+    }
+
+    // 元宝飘落
+    jQuery(document).ready(function($) {
+        $('#newYear').wpSuperSnow({
+            flakes: ['https://lskypro.acozycotage.net/LightPicture/2023/01/422ec05c4910783f.webp', 'https://lskypro.acozycotage.net/LightPicture/2023/01/9fa7569281c7bdf3.webp', 'https://lskypro.acozycotage.net/LightPicture/2023/01/4155f6d134e5e85f.webp'],
+            totalFlakes: '100',
+            zIndex: '999999',
+            maxSize: '30',
+            maxDuration: '20',
+            useFlakeTrans: false
+        });
+    });
+}
+newYear();
