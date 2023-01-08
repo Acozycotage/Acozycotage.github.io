@@ -1,1 +1,90 @@
-YL.export=function(){var e={};YL.vue;e.configs=YL.util.dataCopy("configs"),e.apps=YL.util.dataCopy("apps");var r=YL.util.dataCopy("shortcuts");r.forEach((function(e){delete e.drag,e.children&&e.children.forEach((function(e){delete e.drag}))})),e.shortcuts=r;var t=YL.util.dataCopy("tiles");t.forEach((function(e){e.data.forEach((function(e){delete e.moved}))})),e.tiles=t;var a=YL.util.dataCopy("startMenu");delete a.open,delete a.sidebar.open,a.sidebar=a.sidebar.btns;var n=function(e){if(delete e.open,e.children)for(var r in e.children){var t=e.children[r];n(t)}};for(var i in a.menu){var o=a.menu[i];n(o)}return e.startMenu=a,e},YL.format=function(e){var r=Yuri2.jsonMerge(YL._baseData(),e,!0);for(var t in r.apps){var a=Yuri2.jsonMerge(YL.util.getAppDataTemplate(),r.apps[t]);r.apps[t]=a}r.shortcuts.forEach((function(e){e.drag={mDown:!1,left:0,top:0},e.children&&e.children.forEach((function(e){e.drag={mDown:!1,left:0,top:0}}))})),r.startMenu.open=!1,r.startMenu.sidebar={btns:r.startMenu.sidebar},r.startMenu.sidebar.open=!1;var n=function(e){if(e.open=!1,e.children)for(var r in e.children){var t=e.children[r];n(t)}};for(var t in r.startMenu.menu){var i=r.startMenu.menu[t];n(i)}return r},YL.import=function(e){YL.reset();var r=YL.format(e),t=YL.vue;for(var a in t.$set(t,"apps",r.apps),r)"apps"!==a&&t.$set(t,a,r[a]);t.initRuntime()};
+YL.export = function () {
+  var rel = {};
+  var vue = YL.vue;
+  rel.configs = YL.util.dataCopy('configs');
+  rel.apps = YL.util.dataCopy('apps');
+  var shortcuts = YL.util.dataCopy('shortcuts');
+  shortcuts.forEach(function (shortcut) {
+    delete shortcut.drag;
+    if (shortcut.children) {
+      shortcut.children.forEach(function (t) {
+        delete t.drag;
+      })
+    }
+  });
+  rel.shortcuts = shortcuts;
+  var tiles = YL.util.dataCopy('tiles');
+  tiles.forEach(function (tileGroup) {
+    tileGroup.data.forEach(function (t) {
+      delete t.moved;
+    })
+  });
+  rel.tiles = tiles;
+  var startMenu = YL.util.dataCopy('startMenu');
+  delete startMenu.open;
+  delete startMenu.sidebar.open;
+  startMenu.sidebar = startMenu.sidebar.btns;
+  var removeMenuAttrOpen = function (item) {
+    delete item.open;
+    if (item.children) {
+      for (var i in item.children) {
+        var child = item.children[i];
+        removeMenuAttrOpen(child);
+      }
+    }
+  };
+  for (var i in startMenu.menu) {
+    var item = startMenu.menu[i];
+    removeMenuAttrOpen(item);
+  }
+  rel.startMenu = startMenu;
+  return rel;
+};
+
+//格式化数据为运行时可用
+YL.format = function (json) {
+  var data = Yuri2.jsonMerge(YL._baseData(), json, true);
+  for (var i in data.apps) {
+    var app = Yuri2.jsonMerge(YL.util.getAppDataTemplate(), data.apps[i]);
+    data.apps[i] = app;
+  }
+  data.shortcuts.forEach(function (shortcut) {
+    shortcut.drag = { mDown: false, left: 0, top: 0, };
+    if (shortcut.children) {
+      shortcut.children.forEach(function (t) {
+        t.drag = { mDown: false, left: 0, top: 0, };
+      })
+    }
+  });
+  data.startMenu.open = false;
+  data.startMenu.sidebar = {
+    btns: data.startMenu.sidebar
+  };
+  data.startMenu.sidebar.open = false;
+  var addMenuAttrOpen = function (item) {
+    item.open = false;
+    if (item.children) {
+      for (var i in item.children) {
+        var child = item.children[i];
+        addMenuAttrOpen(child);
+      }
+    }
+  };
+  for (var i in data.startMenu.menu) {
+    var item = data.startMenu.menu[i];
+    addMenuAttrOpen(item);
+  }
+  return data;
+};
+YL.import = function (json) {
+  YL.reset();
+  var data = YL.format(json);
+  var vue = YL.vue;
+  vue.$set(vue, 'apps', data.apps);
+  for (var i in data) {
+    if (i !== 'apps') {
+      vue.$set(vue, i, data[i]);
+    }
+  }
+  vue.initRuntime();
+};
