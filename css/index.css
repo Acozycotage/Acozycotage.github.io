@@ -6765,14 +6765,14 @@ body::-webkit-scrollbar {
 
 /* 导航栏显示标题 */
 #page-name::before {
-  font-size: 18px;
+  font-size: 42px!important;
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  color: rgb(138, 10, 197) !important;
-  top: 0;
-  left: 0;
+  color: rgb(86, 15, 106) !important;
+  top: 0%;
+  left: 45%!important;
   content: "回到顶部";
   background-color: var(--theme-color);
   transition: all 0.3s;
@@ -6782,7 +6782,7 @@ body::-webkit-scrollbar {
   -o-transition: all 0.3s;
   opacity: 0;
   box-shadow: 0 0 3px var(--theme-color);
-  line-height: 45px; /*如果垂直位置不居中可以微调此值，也可以删了*/
+  line-height: 38px; /*如果垂直位置不居中可以微调此值，也可以删了*/
 }
 #page-name:hover:before {
   opacity: 1;
@@ -6809,18 +6809,17 @@ body::-webkit-scrollbar {
 center#name-container {
   position: absolute !important;
   width: fit-content !important;
-  left: 42% !important;
+  left: 36% !important;
 }
 @media screen and (max-width: 768px) {
   center#name-container {
-    display: none;
+    display: none!important;
   }
 }
 
 /* 新年侧边栏 */
-
 #newYear {
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 0 !important;
 }
 
