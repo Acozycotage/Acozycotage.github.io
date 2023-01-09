@@ -7096,7 +7096,44 @@ center#name-container {
   border-radius: 4px;
 }
 
+/* 快速添加友情链接 */
+/* 快速填写格式 */
+.addBtn {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.addBtn button {
+  transtion: .2s;
+  display: flex;
+  margin: 5px auto;
+  color: var(--global-bg);
+  padding: 15px;
+  border-radius: 12px;
+  background: var(--search-result-title);
+  align-items: center;
+}
 
+button {
+  padding: 0;
+  outline: 0;
+  border: none;
+  background: 0 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.fa-solid, .fas {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+.addBtn i {
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+.addBtn button:hover {
+  background: #4b7aff;
+  color: #fff;
+}
 [data-theme="dark"] #web_bg {
   background: url(https://lskypro.acozycotage.net/LightPicture/2023/01/ce2bc23fc39e53f6.webp);
   background-attachment: local;
