@@ -7104,7 +7104,6 @@ center#name-container {
   flex-wrap: wrap;
 }
 .addBtn button {
-  transtion: .2s;
   display: flex;
   margin: 5px auto;
   color: var(--global-bg);
