@@ -7133,6 +7133,28 @@ button {
   background: #4b7aff;
   color: #fff;
 }
+
+/* 返回顶部 */
+button#go-up #percent {
+  display: none;
+  font-weight: bold;
+  font-size: 15px !important;
+}
+
+button#go-up span {
+  font-size: 12px!important;
+  margin-right: -1px;
+}
+
+/* 鼠标滑动到按钮上时显示返回顶部图标 */
+button#go-up:hover i {
+  display: block !important;
+}
+
+button#go-up:hover #percent {
+  display: none !important;
+}
+
 [data-theme="dark"] #web_bg {
   background: url(https://lskypro.acozycotage.net/LightPicture/2023/01/ce2bc23fc39e53f6.webp);
   background-attachment: local;
