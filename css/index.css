@@ -1337,8 +1337,8 @@ canvas:not(#ribbon-canvas),
   --global-font-size: 14px;
   --global-bg: #fff;
   --font-color: #4c4948;
-  --hr-border: #d2ebfd;
-  --hr-before-color: #bfe4fb;
+  --hr-border: #dba7f4;
+  --hr-before-color: #cc83f0;
   --search-bg: #f6f8fa;
   --search-input-color: #4c4948;
   --search-result-title: #4c4948;
@@ -1360,7 +1360,7 @@ canvas:not(#ribbon-canvas),
   --white: #fff;
   --text-highlight-color: #1f2d3d;
   --blockquote-color: #6a737d;
-  --blockquote-bg: rgba(73,177,245,0.1);
+  --blockquote-bg: rgba(189,85,254,0.1);
   --reward-pop: #f5f5f5;
   --toc-link-color: #666261;
   --card-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
@@ -1532,7 +1532,7 @@ img:not([src]) {
 blockquote {
   margin: 0 0 20px;
   padding: 12px 15px;
-  border-left: 3px solid #49b1f5;
+  border-left: 3px solid #bd55fe;
   background-color: var(--blockquote-bg);
   color: var(--blockquote-color);
 }
@@ -2096,7 +2096,7 @@ figure.highlight pre .javascript .function {
   border-color: var(--pseudo-hover);
 }
 .article-sort-item-time {
-  color: #842894;
+  color: #6ac200;
   font-size: 95%;
 }
 .article-sort-item-time time {
@@ -2155,7 +2155,7 @@ figure.highlight pre .javascript .function {
 }
 .category-lists .category-list .category-list-count {
   margin-left: 8px;
-  color: #842894;
+  color: #6ac200;
 }
 .category-lists .category-list .category-list-count:before {
   content: '(';
@@ -2523,7 +2523,7 @@ figure.highlight pre .javascript .function {
 }
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap {
   margin: 6px 0;
-  color: #842894;
+  color: #6ac200;
   font-size: 90%;
 }
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .post-meta-date {
@@ -2551,7 +2551,7 @@ figure.highlight pre .javascript .function {
   display: none;
 }
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap a {
-  color: #842894;
+  color: #6ac200;
 }
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap a:hover {
   color: #49b1f5;
@@ -2743,7 +2743,7 @@ h1.page-title + .tag-cloud-list {
 #aside-content .aside-list > .aside-list-item .content > time,
 #aside-content .aside-list > .aside-list-item .content > .name {
   display: block;
-  color: #842894;
+  color: #6ac200;
   font-size: 85%;
 }
 #aside-content .aside-list > .aside-list-item .content > .title,
@@ -6143,11 +6143,12 @@ blockquote.pullquote.right {
   }
 }
 /* 全局CSS元素存放文件 */
-/* 加载动画 */
-.loading-img {
+
+/* 安知鱼加载动画（暂未使用） */
+/* .loading-img {
   background: url(https://npm.elemecdn.com/anzhiyu-blog@2.1.1/img/avatar.webp) no-repeat center center;
   background-size: cover;
-}
+} */
 
 /* 导航栏居中 */
 /* 一级菜单居中 */
@@ -6181,7 +6182,8 @@ blockquote.pullquote.right {
   background: transparent !important;
 }
 #page-header::before {
-  background: transparent !important;
+  padding: 20px 20px;
+  background-color: #19191940  !important;
 }
 
 /* 夜间模式遮罩透明 */
@@ -6197,7 +6199,7 @@ blockquote.pullquote.right {
   max-width: 1200px;
   margin: 0 auto 12px;
   display: flex;
-  color: rgb(255 255 255 / 80%) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   text-align: left;
   flex-wrap: wrap;
 }
@@ -6351,7 +6353,7 @@ blockquote.pullquote.right {
 }
 #footer-wrap {
   padding: 20px 20px;
-  background-color: #19191940;
+  background-color: #12121288 !important;
 }
 
 /* 页脚心跳动画 */
@@ -6562,8 +6564,8 @@ blockquote.pullquote.right {
 /* 全局页面样式调整 */
 :root {
   --trans-light: rgb(255, 255, 255);
-  --trans-dark: rgba(244, 244, 244, 0.5);
-  --border-style: 1px solid rgba(169, 169, 169, 0.6);
+  --trans-dark: rgba(244, 244, 244, 0.067);
+  --border-style: 1px solid rgba(169, 169, 169, 0.186);
   --backdrop-filter: blur(5px) saturate(150%);
 }
 
@@ -6935,7 +6937,7 @@ body::-webkit-scrollbar {
 
 /* 公告栏突出颜色 */
 :root {
-  --naokuoteng-color: #0b1de2c2;
+  --naokuoteng-color: #3645ebc2;
 }
 
 .card-announcement .item-headline span{
@@ -6949,8 +6951,8 @@ body::-webkit-scrollbar {
 }
 
 .card-announcement {
-  background: linear-gradient(to top left, #ffc4f7 0%, #94f3d5 100%) !important;
-  color:rgb(255, 255, 255);
+  background: linear-gradient(to top left, #fecdf8 0%, #8fcbb8 100%) !important;
+  color:rgb(153, 0, 255);
   line-height:30px;
   font-size:16px;
 }
@@ -7766,6 +7768,20 @@ button#go-up:hover #percent {
   100% {
     transform: rotate();
   }
+}
+
+/* 个人信息卡片背景图 */
+[data-theme="light"] #aside-content > .card-widget.card-info {
+  background-image: url(https://sourcebucket.s3.ladydaily.com/img/snowflower.webp);
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  background-size: 100%;
+}
+[data-theme="dark"] #aside-content > .card-widget.card-info {
+  background-image: url(https://sourcebucket.s3.ladydaily.com/img/aurora.webp);
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  background-size: 100%;
 }
 [data-theme="dark"] #web_bg {
   background: url(https://lskypro.acozycotage.net/LightPicture/2023/01/b3d163d2f92c0004.webp);
