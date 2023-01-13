@@ -29,4 +29,4 @@ function createtime() {
 // 设置重复执行函数，周期1000ms
 setInterval(() => {
   createtime("01/01/2023 00:00:00");
-}, 1000);c
+}, 1000);
