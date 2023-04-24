@@ -5665,7 +5665,6 @@ blockquote.pullquote.right {
 }
 [data-theme='dark'] #page-header.nav-fixed > #nav,
 [data-theme='dark'] #page-header.not-top-img > #nav {
-  background: rgba(18,18,18,0.8);
   -webkit-box-shadow: 0 5px 6px -5px rgba(133,133,133,0);
   box-shadow: 0 5px 6px -5px rgba(133,133,133,0);
 }
@@ -6542,92 +6541,6 @@ blockquote {
 }
 #footer-wrap {
   padding: 20px 20px;
-}
-
-/* 页脚心跳动画 */
-#heartbeat {
-  color: red;
-  animation: iconAnimate 1s ease-in-out infinite;
-}
-@-moz-keyframes iconAnimate {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  10%,
-  30% {
-    transform: scale(0.9);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: scale(1.1);
-  }
-  50%,
-  70% {
-    transform: scale(1.1);
-  }
-}
-@-webkit-keyframes iconAnimate {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  10%,
-  30% {
-    transform: scale(0.9);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: scale(1.1);
-  }
-  50%,
-  70% {
-    transform: scale(1.1);
-  }
-}
-@-o-keyframes iconAnimate {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  10%,
-  30% {
-    transform: scale(0.9);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: scale(1.1);
-  }
-  50%,
-  70% {
-    transform: scale(1.1);
-  }
-}
-@keyframes iconAnimate {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  10%,
-  30% {
-    transform: scale(0.9);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: scale(1.1);
-  }
-  50%,
-  70% {
-    transform: scale(1.1);
-  }
 }
 
 /* 背景宇宙星光  */

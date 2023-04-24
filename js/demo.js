@@ -63,9 +63,3 @@ function createtime() {
     document.getElementById("workboard") &&
     (document.getElementById("workboard").innerHTML = currentTimeHtml);
 }
-// 设置重复执行函数，周期1000ms
-// setInterval(() => {
-//   createtime();
-// }, 1000);
-
-
