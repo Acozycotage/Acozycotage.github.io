@@ -2463,6 +2463,9 @@ figure.highlight pre .javascript .function {
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap .article-meta-link {
   margin: 0 4px;
 }
+#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap time {
+  display: none;
+}
 #recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap a {
   color: #858585;
 }
@@ -3547,6 +3550,9 @@ h1.page-title + .tag-cloud-list {
   color: #49b1f5;
   text-decoration: underline;
 }
+#post-info #post-meta time {
+  display: none;
+}
 .roll-name-content,
 .nav-fixed.nav-visible .roll-name-content,
 .nav-fixed #nav .menus_items {
@@ -4570,6 +4576,18 @@ h1.page-title + .tag-cloud-list {
 }
 #waline-wrap .wl-comment-actions > button:not(last-child) {
   padding-right: 4px;
+}
+#vcomment textarea {
+  background: url("#f8f9fa") 100% 100% no-repeat;
+}
+#vcomment textarea:focus {
+  background-image: none;
+}
+#waline-wrap textarea {
+  background: url("#f8f9fa") 100% 100% no-repeat;
+}
+#waline-wrap textarea:focus {
+  background-image: none;
 }
 .fireworks {
   position: fixed;
